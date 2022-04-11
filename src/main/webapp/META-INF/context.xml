@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/JDBC">  
+    <Resource name="SqlServerJdbc/HouseShipDB" 
+    	auth="Container" type="javax.sql.DataSource" 
+    	maxActive="100" maxIdle="30" maxWait="10000"
+    	username="sa" password="Passw0rd"
+    	driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    	url="jdbc:sqlserver://localhost:1433;databaseName=HouseShip" />
+<!--     	url="jdbc:sqlserver://172.22.35.114:1433;databaseName=HouseShip" -->
+</Context>

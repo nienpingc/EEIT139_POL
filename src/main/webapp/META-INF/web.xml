@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	id="WebApp_ID" version="4.0">
+	<display-name>HouseShip</display-name>
+	<filter>
+		<filter-name>Encoding</filter-name>
+		<filter-class>filter.Encoding</filter-class>
+		<init-param>
+			<param-name>Encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>Encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+		<dispatcher>ASYNC</dispatcher>
+	</filter-mapping>
+	<filter>
+		<filter-name>OpenTransaction</filter-name>
+		<filter-class>filter.OpenTransaction</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenTransaction</filter-name>
+		<url-pattern>/*</url-pattern>
+<!-- 		<dispatcher>FORWARD</dispatcher> -->
+<!-- 		<dispatcher>INCLUDE</dispatcher> -->
+<!-- 		<dispatcher>REQUEST</dispatcher> -->
+<!-- 		<dispatcher>ERROR</dispatcher> -->
+<!-- 		<dispatcher>ASYNC</dispatcher> -->
+	</filter-mapping>
+<!-- 	<filter> -->
+<!-- 		<filter-name>Encoder</filter-name> -->
+<!-- 		<filter-class>filter.Encoder</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>Encoder</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 		<dispatcher>FORWARD</dispatcher> -->
+<!-- 		<dispatcher>INCLUDE</dispatcher> -->
+<!-- 		<dispatcher>REQUEST</dispatcher> -->
+<!-- 		<dispatcher>ERROR</dispatcher> -->
+<!-- 		<dispatcher>ASYNC</dispatcher> -->
+<!-- 	</filter-mapping> -->
+	<filter>
+		<filter-name>SignIn</filter-name>
+		<filter-class>filter.SignIn</filter-class>
+		<init-param>
+			<param-name>SignInFailure_Path</param-name>
+			<param-value>/JSP/signIn.jsp</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SignIn</filter-name>
+		<url-pattern>/</url-pattern>
+		<url-pattern>/index</url-pattern>
+		<url-pattern>/index_project.jsp</url-pattern>
+		<url-pattern>/JSP/member/*</url-pattern>
+		<url-pattern>/JSP/house/*</url-pattern>
+		<url-pattern>/JSP/order/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+		<dispatcher>ASYNC</dispatcher>
+	</filter-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+	<resource-ref>
+		<res-ref-name>SqlServerJdbc/HouseShipDB</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+</web-app>
