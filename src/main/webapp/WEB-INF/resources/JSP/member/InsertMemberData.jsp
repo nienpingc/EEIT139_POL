@@ -40,7 +40,7 @@
 	<div class="div1">
 	<h2 class="head2">新增會員</h2>
 	<div class="divForm">
-	<form action="insertmember.controller" method="get">
+	<form action="insertmember.controller" method="post">
 		帳號<input class="form-control" type="text" name="account" required placeholder="必填"><br>
 		密碼<input class="form-control" type="text" name="hashed_pwd" required placeholder="必填"><br>
 		鹽值<input class="form-control" type="text" name="salt"  value="" required placeholder="必填"><br>

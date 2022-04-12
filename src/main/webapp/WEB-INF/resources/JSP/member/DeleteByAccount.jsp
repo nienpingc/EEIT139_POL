@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="tw.grp4.member.*"%>
+    pageEncoding="UTF-8" import="tw.grp4.member.*" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +43,7 @@
 	
 	<h2 class="head2">刪除會員資料</h2>
 	
-	<form action="deletemember.controller" method="delete">
+	<form:form action="${member.account}" method="post" modelAttribute="member">
 
 	
 	<div class="divForm">
@@ -54,48 +56,45 @@
 		</thead>
 		<tbody>
 		<tr>
-			<td>帳號</td>
-			<td><input type="text" name="account" value="${account}" disabled></td>
-			<!-- 上面沒法傳輸資料到controller,用下面的hidden代替,上面負責顯示 -->
-			<input type="text" name="account" value="${account}" hidden>
+			<td><form:label path="account">會員:</form:label></td>
+			<td><form:input id="account" size="30" path="account" /></td>
 		</tr>
 		<tr>
-		<!-- 密碼設成disabled結果集會變null值 -->
-			<td>密碼</td>
-			<td><input type="text" name="hashed_pwd" value="${member.getHashed_pwd()}" disabled></td>
+			<td><form:label path="hashed_pwd">密碼:</form:label></td>
+			<td><form:input id="hashed_pwd" size="30" path="hashed_pwd"/></td>
 		</tr>
 		<tr>
-			<td>鹽值</td>
-			<td><input type="text" name="salt" value="${member.getSalt()}"disabled></td>
+			<td><form:label path="salt">密碼:</form:label></td>
+			<td><form:input id="salt" size="30" path="salt"/></td>
 		</tr>
 		<tr>
-			<td>姓</td>
-			<td><input type="text" name="firstname" value="${member.getFirstname()}"disabled></td>
+			<td><form:label path="firstname">姓:</form:label></td>
+			<td><form:input id="firstname" size="30" path="firstname"/></td>
 		</tr>
 		<tr>
-			<td>名</td>
-			<td><input type="text"  name="lastname" value="${member.getLastname()}"disabled></td>
+			<td><form:label path="lastname">名:</form:label></td>
+			<td><form:input id="lastname" size="30" path="lastname"/></td>
 		</tr>
 		<tr>
-			<td>生日</td>
-			<td><input type="date"  name="birthday" value="${member.getBirthday()}"disabled></td>
+			<td><form:label path="birthday">生日:</form:label></td>
+			<td><form:input type="date" id="birthday" size="30" path="birthday"/></td>
 		</tr>
 
 		<tr>
-			<td>e-mail</td>
-			<td><input type="text"  name="email" value="${member.getEmail()}"disabled></td>
+			<td><form:label path="email">e-mail</form:label></td>
+			<td><form:input id="email" size="30" path="email"/></td>
 		</tr>
 		<tr>
-			<td>地址</td>
-			<td><input type="text"  name="m_address" value="${member.getM_address()}"disabled></td>
+			<td><form:label path="m_address">地址:</form:label></td>
+			<td><form:input id="address" size="30" path="m_address"/></td>
 		</tr>
 		<tr>
-			<td>聯絡電話</td>
-			<td><input type="text"  name="phone" value="${member.getPhone()}"disabled></td>
+			<td><form:label path="phone">聯絡電話:</form:label></td>
+			<td><form:input id="phone" size="30" path="phone"/></td>
 		</tr>
 		<tr>
-			<td>頭像</td>
-			<td><input type="text"  name="mempic" value="${member.getMempic()}"disabled></td>
+			<td><form:label path="mempic">頭像:</form:label></td>
+			<td><form:input id="mempic" size="30" path="mempic"/></td>
 		</tr>	
 		</tbody>		
 	</table>
@@ -103,7 +102,7 @@
 			<input type="submit" name="delete_confirm" class="btn btn-primary" value="刪除">
 	</div>
 	</div>
-	</form>
+	</form:form>
 	</div>
 	<div class="divInput">
 			<a href="/HouseShip/member"><input type="submit" class="btn btn-secondary" value="取消"></a>

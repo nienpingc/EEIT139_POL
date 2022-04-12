@@ -124,7 +124,7 @@
 						<div class="card-body">
 							<!--表單內容可以從這開始 -->
 							<div>
-								<a href="member/insertmembermain.controller" style="margin-left:1px;display:inline"><input
+								<a href="member/insertmember.controller" style="margin-left:1px;display:inline"><input
 									class="btn-primary" type="submit" name="new" value="新增"></a>
 								<form style="display:inline" action="#" method="get">
 <!-- 									<input style="margin-left:10px;display:inline" -->
@@ -147,21 +147,22 @@
 										</thead>
 										<tbody>
 											<c:forEach var="members"
-												items="${memberList}">
+												items="${membersList}">
 											<tr>
 												<td><input class="checkMe" type="checkbox" name="check"
-												value="${members.getAccount()}"></td>
-												<td>${members.getAccount()}</td>	
-												<td>${members.getHashed_pwd()}</td>	
-												<td>${members.getFirstname()}</td>	
-												<td>${members.getLastname()}</td>	
-												<td>${members.getBirthday()}</td>	
-												<td>${members.getEmail()}</td>	
-												<td>${members.getM_address()}</td>	
-												<td>${members.getPhone()}</td>	
-												<td>${members.getMempic()}</td>	
-												<td class="text-center"><a class="btn btn-primary" href="checkbeforeupdate.controller?account=${members.getAccount()}">修改</a></td>
-												<td class="text-center"><a class="btn btn-danger" href="cheakbeforedelete.controller?account=${members.getAccount()}">刪除</a></td>
+												value="${members.account}"></td>
+												<td>${members.account}</td>	
+												<td>${members.hashed_pwd}</td>	
+												<td>${members.firstname}</td>	
+												<td>${members.lastname}</td>	
+												<td>${members.birthday}</td>	
+												<td>${members.email}</td>	
+												<td>${members.m_address}</td>	
+												<td>${members.phone}</td>	
+												<td>${members.mempic}</td>	
+												<td class="text-center"><a class="btn btn-primary" href="<c:url value="/member/updatemember.controller/${members.account}"/>" role="button"> 修改</a></td>
+												<td class="text-center"><a class="btn btn-danger" href="<c:url value="/member/deletemember.controller/${members.account}"/>" role="button">刪除</a></td>
+												<!-- <td class="text-center"><a class="btn btn-danger" href="member/deletemember.controller?account=${members.getAccount()}">刪除</a></td> -->
 											</tr>
 											</c:forEach>
 										</tbody>

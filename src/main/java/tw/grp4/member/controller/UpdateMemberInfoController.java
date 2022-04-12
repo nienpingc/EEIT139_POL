@@ -61,9 +61,6 @@ import tw.grp4.member.model.MemberService;
 			
 			boolean statu =true;
 			statu = memberService.update(account,member);
-			System.out.println(member.getAccount());
-			System.out.println(member.getBirthday());
-			
 			
 			if(statu==true) {
 				//更新完資料,更新session屬性狀態,以便導回頁面時能看到最新資訊
